@@ -1,24 +1,58 @@
 import './app.css';
 
 const App = () => {
-  const age = 10;
+  // const numbers = [1, 2, 3, 4, 5, 5, 7];
 
-  const hardSum = 5125215 + 123213;
-  let res;
+  // const newNumbers: any[] = [];
 
-  if (age > 20) {
-    res = 'You are older than 20';
-  } else {
-    res = 'You are less than 20';
+  // for (let i = 0; i < numbers.length; i++) {
+  //   newNumbers.push(<li> {numbers[i]}</li>);
+  // }
+
+  interface IUser {
+    id: number;
+    username: string;
+    password: string;
+    role?: string;
   }
+
+  const users: IUser[] = [];
+
+  users.push({
+    id: 1,
+    username: 'saleh',
+    password: '123',
+    role: 'admin',
+  });
+
+  users.push({
+    id: 2,
+    username: 'ali',
+    password: '1234',
+    role: 'user',
+  });
+
+  console.log(users);
 
   return (
     <div className='App'>
-      <h1>{res}</h1>
-      <h1>{hardSum}</h1>
-      <h1 className='mt-5'>
-        {age > 20 ? 'You are older than 20' : 'You are less than 20'}
-      </h1>
+      {/* <ul> */}
+      {/* <h1>{newNumbers}</h1> */}
+      {/* {numbers.map((number, index) => {
+          return <li key={index}>{number}</li>;
+        })} */}
+      {/* </ul> */}
+
+      <ul className='list-group'>
+        {users.map((user) => {
+          return (
+            <div key={user.id}>
+              <li className='list-group-item'>{user.username}</li>
+              <li className='list-group-item'>{user.role}</li>
+            </div>
+          );
+        })}
+      </ul>
     </div>
   );
 };
