@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './app.css';
 
-function App() {
+const App = () => {
+  const age = 10;
+
+  let res;
+
+  if (age > 20) {
+    res = 'You are older than 20';
+  } else {
+    res = 'You are less than 20';
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>{res}</h1>
+      <h1 className='mt-5'>
+        {age > 20 ? 'You are older than 20' : 'You are less than 20'}
+      </h1>
     </div>
   );
-}
+};
 
 export default App;
