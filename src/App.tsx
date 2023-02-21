@@ -1,58 +1,65 @@
+import { FormEvent } from 'react';
 import './app.css';
 
 const App = () => {
-  // const numbers = [1, 2, 3, 4, 5, 5, 7];
+  const inMouseOver = (e: any) => {
+    console.log('onMouseOver');
+  };
 
-  // const newNumbers: any[] = [];
+  const onClick = (e: any) => {
+    alert('You clicked the button');
+  };
 
-  // for (let i = 0; i < numbers.length; i++) {
-  //   newNumbers.push(<li> {numbers[i]}</li>);
-  // }
-
-  interface IUser {
-    id: number;
-    username: string;
-    password: string;
-    role?: string;
-  }
-
-  const users: IUser[] = [];
-
-  users.push({
-    id: 1,
-    username: 'saleh',
-    password: '123',
-    role: 'admin',
-  });
-
-  users.push({
-    id: 2,
-    username: 'ali',
-    password: '1234',
-    role: 'user',
-  });
-
-  console.log(users);
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   return (
     <div className='App'>
-      {/* <ul> */}
-      {/* <h1>{newNumbers}</h1> */}
-      {/* {numbers.map((number, index) => {
-          return <li key={index}>{number}</li>;
-        })} */}
-      {/* </ul> */}
-
-      <ul className='list-group'>
-        {users.map((user) => {
-          return (
-            <div key={user.id}>
-              <li className='list-group-item'>{user.username}</li>
-              <li className='list-group-item'>{user.role}</li>
-            </div>
-          );
-        })}
-      </ul>
+      <button onClick={onClick}>Click me</button>
+      <form onSubmit={onSubmit}>
+        <div className='mb-3'>
+          <label
+            onMouseOver={inMouseOver}
+            htmlFor='exampleInputEmail1'
+            className='form-label'
+          >
+            Email address
+          </label>
+          <input
+            type='email'
+            className='form-control'
+            id='exampleInputEmail1'
+            aria-describedby='emailHelp'
+          />
+          <div id='emailHelp' className='form-text'>
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div className='mb-3'>
+          <label htmlFor='exampleInputPassword1' className='form-label'>
+            Password
+          </label>
+          <input
+            type='password'
+            className='form-control'
+            id='exampleInputPassword1'
+          />
+        </div>
+        <div className='mb-3 form-check'>
+          <input
+            type='checkbox'
+            className='form-check-input'
+            id='exampleCheck1'
+          />
+          <label className='form-check-label' htmlFor='exampleCheck1'>
+            Check me out
+          </label>
+        </div>
+        <button type='submit' className='btn btn-primary'>
+          Submit
+        </button>
+      </form>
     </div>
   );
 };
