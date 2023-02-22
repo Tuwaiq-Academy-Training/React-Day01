@@ -1,65 +1,35 @@
-import { FormEvent } from 'react';
 import './app.css';
+import FirstComp from './components/FirstComp';
+import Navbar from './components/Navbar';
+import { INavbarList } from './types/mainTypes';
 
 const App = () => {
-  const inMouseOver = (e: any) => {
-    console.log('onMouseOver');
-  };
+  const webSiteName = 'My Website';
+  const navbarList: INavbarList[] = [];
+  navbarList.push({
+    name: 'home',
+    url: '/',
+  });
 
-  const onClick = (e: any) => {
-    alert('You clicked the button');
-  };
+  navbarList.push({
+    name: 'contact',
+    url: '/contact',
+  });
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
+  navbarList.push({
+    name: 'about',
+    url: '/about',
+  });
 
+  navbarList.push({
+    name: 'reachus',
+    url: '/react',
+  });
   return (
     <div className='App'>
-      <button onClick={onClick}>Click me</button>
-      <form onSubmit={onSubmit}>
-        <div className='mb-3'>
-          <label
-            onMouseOver={inMouseOver}
-            htmlFor='exampleInputEmail1'
-            className='form-label'
-          >
-            Email address
-          </label>
-          <input
-            type='email'
-            className='form-control'
-            id='exampleInputEmail1'
-            aria-describedby='emailHelp'
-          />
-          <div id='emailHelp' className='form-text'>
-            We'll never share your email with anyone else.
-          </div>
-        </div>
-        <div className='mb-3'>
-          <label htmlFor='exampleInputPassword1' className='form-label'>
-            Password
-          </label>
-          <input
-            type='password'
-            className='form-control'
-            id='exampleInputPassword1'
-          />
-        </div>
-        <div className='mb-3 form-check'>
-          <input
-            type='checkbox'
-            className='form-check-input'
-            id='exampleCheck1'
-          />
-          <label className='form-check-label' htmlFor='exampleCheck1'>
-            Check me out
-          </label>
-        </div>
-        <button type='submit' className='btn btn-primary'>
-          Submit
-        </button>
-      </form>
+      <Navbar webSiteName={webSiteName} navbarList={navbarList} />
+      <FirstComp />
+      <FirstComp />
     </div>
   );
 };
