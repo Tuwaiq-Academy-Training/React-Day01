@@ -1,35 +1,23 @@
+import { useState } from 'react';
 import './app.css';
-import FirstComp from './components/FirstComp';
-import Navbar from './components/Navbar';
-import { INavbarList } from './types/mainTypes';
+import Form from './components/Form';
 
 const App = () => {
-  const webSiteName = 'My Website';
-  const navbarList: INavbarList[] = [];
-  navbarList.push({
-    name: 'home',
-    url: '/',
-  });
+  const [count, setCount] = useState<number>(0);
 
-  navbarList.push({
-    name: 'contact',
-    url: '/contact',
-  });
+  const onClick = (e: React.MouseEvent<HTMLElement>) => {
+    setCount(count + 1);
+  };
 
-  navbarList.push({
-    name: 'about',
-    url: '/about',
-  });
+  console.log('Hey from مطبخ');
 
-  navbarList.push({
-    name: 'reachus',
-    url: '/react',
-  });
   return (
-    <div className='App'>
-      <Navbar webSiteName={webSiteName} navbarList={navbarList} />
-      <FirstComp />
-      <FirstComp />
+    <div className='App '>
+      {/* <h1>{count}</h1>
+      <button onClick={onClick} type='button' className='btn btn-primary'>
+        Click me
+      </button> */}
+      <Form />
     </div>
   );
 };
